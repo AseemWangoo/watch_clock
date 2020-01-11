@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:watch_clock/circular/hour_painter.dart';
@@ -109,7 +111,7 @@ class BellsAndLegsPainter extends CustomPainter {
   BellsAndLegsPainter() : legPaint = Paint() {
     legPaint.color = Colors.black;
     legPaint.style = PaintingStyle.stroke;
-    legPaint.strokeWidth = 10.0;
+    legPaint.strokeWidth = 8.0;
     legPaint.strokeCap = StrokeCap.round;
   }
 
@@ -121,17 +123,13 @@ class BellsAndLegsPainter extends CustomPainter {
     canvas.translate(radius, radius);
 
     // canvas.rotate(2 * pi / 12);
-    drawBellAndLeg(radius, canvas);
-
-    canvas.restore();
-  }
-
-  void drawBellAndLeg(radius, canvas) {
     Path path2 = Path();
-    path2.moveTo(0.0, -radius);
-    path2.lineTo(0.0, radius);
+    // path2.moveTo(0.0, -radius);
+    path2.lineTo(0.0, -radius + 5.0);
 
     canvas.drawPath(path2, legPaint);
+
+    canvas.restore();
   }
 
   @override
