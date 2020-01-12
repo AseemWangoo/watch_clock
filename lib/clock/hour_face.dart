@@ -57,7 +57,7 @@ class _HourFaceState extends State<HourFace>
         width: 200.0,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
-          // color: Colors.grey,
+          color: Colors.grey[850],
         ),
         child: Consumer<TimeModel>(
           builder: (_, model, __) {

@@ -6,6 +6,7 @@ import 'package:watch_clock/clock/minute_face.dart';
 import 'package:watch_clock/clock/second_face.dart';
 import 'package:watch_clock/models/time.dart';
 import 'package:watch_clock/shared/widgets/change_notifier.dart';
+import 'package:watch_clock/shared/widgets/time_text.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -35,7 +36,12 @@ class _Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //
-    final List<Widget> _clock = [HourFace(), SecondFace(), MinuteFace()];
+    final List<Widget> _clock = [
+      TimeText(timeDisplay: TimeDisplay.hour),
+      HourFace(),
+      SecondFace(),
+      MinuteFace()
+    ];
 
     return Scaffold(
       body: SafeArea(
@@ -55,10 +61,7 @@ class _Home extends StatelessWidget {
                   return Center(
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(model.currentTime),
-                        child,
-                      ],
+                      children: [Text(model.currentTime), child],
                     ),
                   );
                 },
