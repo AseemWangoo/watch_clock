@@ -49,29 +49,29 @@ class _MinuteFaceState extends State<MinuteFace>
       builder: (context, child) {
         return Positioned(
           left: _animation.value * 200.0,
-          child: child,
+          child: Container(
+            height: 200.0,
+            width: 200.0,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: _controller.isCompleted ? null : Colors.grey[850],
+            ),
+            child: child,
+          ),
         );
       },
-      child: Container(
-        height: 200.0,
-        width: 200.0,
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          // color: Colors.grey,
-        ),
-        child: Consumer<TimeModel>(
-          builder: (_, model, __) {
-            //
-            return CustomPaint(
-              painter: GenericPainter(
-                clockHand: ClockHand.minute,
-                hours: model.currentHour,
-                minutes: model.currentMinute,
-                seconds: model.currentSecond,
-              ),
-            );
-          },
-        ),
+      child: Consumer<TimeModel>(
+        builder: (_, model, __) {
+          //
+          return CustomPaint(
+            painter: GenericPainter(
+              clockHand: ClockHand.minute,
+              hours: model.currentHour,
+              minutes: model.currentMinute,
+              seconds: model.currentSecond,
+            ),
+          );
+        },
       ),
     );
   }
