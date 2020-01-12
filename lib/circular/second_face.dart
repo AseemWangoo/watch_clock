@@ -12,8 +12,8 @@ class SecondFace extends StatelessWidget {
     //
 
     return Container(
-      height: 300.0,
-      width: 300.0,
+      height: 200.0,
+      width: 200.0,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         color: Colors.grey,
