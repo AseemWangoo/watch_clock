@@ -43,7 +43,7 @@ class _Home extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: ChangeNotifierWidget<TimeModel>(
-                child: RotationAnimation(),
+                child: SecondFace(),
                 model: TimeModel(),
                 builder: (context, model, child) {
                   //

@@ -108,7 +108,9 @@ class SampleClock extends StatelessWidget {
 class BellsAndLegsPainter extends CustomPainter {
   final Paint legPaint;
 
-  BellsAndLegsPainter() : legPaint = Paint() {
+  final int seconds;
+
+  BellsAndLegsPainter({this.seconds = 0}) : legPaint = Paint() {
     legPaint.color = Colors.black;
     legPaint.style = PaintingStyle.stroke;
     legPaint.strokeWidth = 8.0;
@@ -121,10 +123,9 @@ class BellsAndLegsPainter extends CustomPainter {
     canvas.save();
 
     canvas.translate(radius, radius);
+    canvas.rotate(2 * pi * this.seconds / 60);
 
-    // canvas.rotate(2 * pi / 12);
     Path path2 = Path();
-    // path2.moveTo(0.0, -radius);
     path2.lineTo(0.0, -radius + 5.0);
 
     canvas.drawPath(path2, legPaint);
