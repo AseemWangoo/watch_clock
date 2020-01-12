@@ -1,110 +1,5 @@
-import 'dart:math';
-
+import 'dart:math' as math show pi;
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
-import 'package:watch_clock/clock/hour_painter.dart';
-import 'package:watch_clock/clock/minute_painter.dart';
-import 'package:watch_clock/clock/painter.dart';
-import 'package:watch_clock/clock/second_painter.dart';
-import 'package:watch_clock/models/time.dart';
-
-class SampleClock extends StatelessWidget {
-  const SampleClock({Key key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    //
-
-    return Stack(
-      children: [
-        // Container(
-        //   height: 300.0,
-        //   width: 300.0,
-        //   // decoration: BoxDecoration(
-        //   //   shape: BoxShape.circle,
-        //   //   color: Colors.grey,
-        //   // ),
-        //   child: CustomPaint(
-        //     painter: BellsAndLegsPainter(),
-        //   ),
-        // ),
-        Container(
-          height: 300.0,
-          width: 300.0,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: Colors.black,
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Container(
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: Colors.white,
-              ),
-              child: Stack(
-                children: [
-                  Center(
-                    child: Container(
-                      width: 15.0,
-                      height: 15.0,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Colors.green,
-                      ),
-                    ),
-                  ),
-                  Container(
-                    width: 300.0,
-                    height: 300.0,
-                    padding: const EdgeInsets.all(10.0),
-                    child: CustomPaint(
-                      painter: ClockDialPainter(clockText: ClockText.roman),
-                    ),
-                  ),
-                  Container(
-                    height: 300.0,
-                    width: 300.0,
-                    padding: const EdgeInsets.all(40.0),
-                    child: Consumer<TimeModel>(
-                      builder: (_, model, __) {
-                        //
-
-                        return Stack(
-                          fit: StackFit.expand,
-                          children: [
-                            CustomPaint(
-                              painter: HourHandPainter(
-                                hours: model.currentHour,
-                                minutes: model.currentMinute,
-                              ),
-                            ),
-                            CustomPaint(
-                              painter: MinuteHandPainter(
-                                minutes: model.currentMinute,
-                                seconds: model.currentSecond,
-                              ),
-                            ),
-                            CustomPaint(
-                              painter: SecondHandPainter(
-                                seconds: model.currentSecond,
-                              ),
-                            ),
-                          ],
-                        );
-                      },
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-}
 
 enum ClockHand { hour, minute, second }
 
@@ -137,18 +32,19 @@ class GenericPainter extends CustomPainter {
     switch (clockHand) {
       case ClockHand.hour:
         canvas.rotate(this.hours >= 12
-            ? 2 * pi * ((this.hours - 12) / 12 + (this.minutes / 720))
-            : 2 * pi * ((this.hours / 12) + (this.minutes / 720)));
+            ? 2 * math.pi * ((this.hours - 12) / 12 + (this.minutes / 720))
+            : 2 * math.pi * ((this.hours / 12) + (this.minutes / 720)));
 
         Path path = Path();
-        path.lineTo(0.0, -radius + radius / 3);
+        path.lineTo(0.0, -radius + radius / 2.5);
         path.close();
 
         canvas.drawPath(path, handPaint);
         break;
 
       case ClockHand.minute:
-        canvas.rotate(2 * pi * ((this.minutes + (this.seconds / 60)) / 60));
+        canvas
+            .rotate(2 * math.pi * ((this.minutes + (this.seconds / 60)) / 60));
 
         Path path = Path();
         path.lineTo(-8.5, -radius + 20.0);
@@ -158,7 +54,7 @@ class GenericPainter extends CustomPainter {
         break;
 
       case ClockHand.second:
-        canvas.rotate(2 * pi * this.seconds / 60);
+        canvas.rotate(2 * math.pi * this.seconds / 60);
 
         Path path = Path();
         path.lineTo(0.0, -radius + 5.0);

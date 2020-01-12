@@ -35,7 +35,7 @@ class _Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //
-    final List<Widget> _clock = [HourFace(), MinuteFace(), SecondFace()];
+    final List<Widget> _clock = [HourFace(), SecondFace(), MinuteFace()];
 
     return Scaffold(
       body: SafeArea(
@@ -45,8 +45,8 @@ class _Home extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: ChangeNotifierWidget<TimeModel>(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                child: Stack(
+                  overflow: Overflow.visible,
                   children: _clock,
                 ),
                 model: TimeModel(),
