@@ -106,109 +106,70 @@ class SampleClock extends StatelessWidget {
   }
 }
 
-class ClockPainter extends CustomPainter {
-  final Paint legPaint;
+enum ClockHand { hour, minute, second }
 
+class GenericPainter extends CustomPainter {
+  final Paint handPaint;
+  final ClockHand clockHand;
+
+  final int hours;
+  final int minutes;
   final int seconds;
 
-  ClockPainter({this.seconds = 0}) : legPaint = Paint() {
-    legPaint.color = Colors.black;
-    legPaint.style = PaintingStyle.stroke;
-    legPaint.strokeWidth = 8.0;
-    legPaint.strokeCap = StrokeCap.round;
+  GenericPainter({
+    this.hours = 0,
+    this.minutes = 0,
+    this.seconds = 0,
+    this.clockHand = ClockHand.hour,
+  }) : handPaint = Paint() {
+    handPaint.color = Colors.white;
+    handPaint.style = PaintingStyle.stroke;
+    handPaint.strokeWidth = 7.0;
+    handPaint.strokeCap = StrokeCap.round;
   }
-
   @override
   void paint(Canvas canvas, Size size) {
     final radius = size.width / 2;
     canvas.save();
 
     canvas.translate(radius, radius);
-    canvas.rotate(2 * pi * this.seconds / 60);
 
-    Path path = Path();
-    path.lineTo(0.0, -radius + 5.0);
+    switch (clockHand) {
+      case ClockHand.hour:
+        canvas.rotate(this.hours >= 12
+            ? 2 * pi * ((this.hours - 12) / 12 + (this.minutes / 720))
+            : 2 * pi * ((this.hours / 12) + (this.minutes / 720)));
 
-    canvas.drawPath(path, legPaint);
+        Path path = Path();
+        path.lineTo(0.0, -radius + radius / 3);
+        path.close();
+
+        canvas.drawPath(path, handPaint);
+        break;
+
+      case ClockHand.minute:
+        canvas.rotate(2 * pi * ((this.minutes + (this.seconds / 60)) / 60));
+
+        Path path = Path();
+        path.lineTo(-8.5, -radius + 20.0);
+        path.close();
+
+        canvas.drawPath(path, handPaint);
+        break;
+
+      case ClockHand.second:
+        canvas.rotate(2 * pi * this.seconds / 60);
+
+        Path path = Path();
+        path.lineTo(0.0, -radius + 5.0);
+
+        canvas.drawPath(path, handPaint);
+        break;
+    }
 
     canvas.restore();
   }
 
   @override
   bool shouldRepaint(CustomPainter oldDelegate) => false;
-}
-
-class MinutePainter extends CustomPainter {
-  final Paint legPaint;
-  final int minutes;
-  final int seconds;
-
-  MinutePainter({
-    this.minutes = 0,
-    this.seconds = 0,
-  }) : legPaint = Paint() {
-    legPaint.color = Colors.black;
-    legPaint.style = PaintingStyle.stroke;
-    legPaint.strokeWidth = 8.0;
-    legPaint.strokeCap = StrokeCap.round;
-  }
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final radius = size.width / 2;
-    canvas.save();
-
-    canvas.translate(radius, radius);
-
-    canvas.rotate(2 * pi * ((this.minutes + (this.seconds / 60)) / 60));
-
-    Path path = Path();
-    path.lineTo(-8.5, -radius + 20.0);
-    path.close();
-
-    canvas.drawPath(path, legPaint);
-
-    canvas.restore();
-  }
-
-  @override
-  bool shouldRepaint(MinutePainter oldDelegate) => false;
-}
-
-class HourPainter extends CustomPainter {
-  final Paint legPaint;
-  final int hours;
-  final int minutes;
-
-  HourPainter({
-    this.hours = 0,
-    this.minutes = 0,
-  }) : legPaint = Paint() {
-    legPaint.color = Colors.black;
-    legPaint.style = PaintingStyle.stroke;
-    legPaint.strokeWidth = 8.0;
-    legPaint.strokeCap = StrokeCap.round;
-  }
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final radius = size.width / 2;
-    canvas.save();
-
-    canvas.translate(radius, radius);
-
-    canvas.rotate(this.hours >= 12
-        ? 2 * pi * ((this.hours - 12) / 12 + (this.minutes / 720))
-        : 2 * pi * ((this.hours / 12) + (this.minutes / 720)));
-
-    Path path = Path();
-    path.lineTo(0.0, -radius + radius / 3);
-    path.close();
-
-    canvas.drawPath(path, legPaint);
-    canvas.restore();
-  }
-
-  @override
-  bool shouldRepaint(HourPainter oldDelegate) => false;
 }

@@ -22,7 +22,9 @@ class MinuteFace extends StatelessWidget {
         builder: (_, model, __) {
           //
           return CustomPaint(
-            painter: MinutePainter(
+            painter: GenericPainter(
+              clockHand: ClockHand.minute,
+              hours: model.currentHour,
               minutes: model.currentMinute,
               seconds: model.currentSecond,
             ),

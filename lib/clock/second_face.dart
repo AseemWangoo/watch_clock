@@ -22,7 +22,12 @@ class SecondFace extends StatelessWidget {
         builder: (_, model, __) {
           //
           return CustomPaint(
-            painter: ClockPainter(seconds: model.currentSecond),
+            painter: GenericPainter(
+              clockHand: ClockHand.second,
+              hours: model.currentHour,
+              minutes: model.currentMinute,
+              seconds: model.currentSecond,
+            ),
           );
         },
       ),
