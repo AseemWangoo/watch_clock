@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:watch_clock/circular/minute_painter.dart';
+
 import 'package:watch_clock/circular/sample.dart';
 import 'package:watch_clock/models/time.dart';
 
@@ -21,7 +23,10 @@ class MinuteFace extends StatelessWidget {
         builder: (_, model, __) {
           //
           return CustomPaint(
-            painter: ClockPainter(seconds: model.currentSecond),
+            painter: MinutePainter(
+              minutes: model.currentMinute,
+              seconds: model.currentSecond,
+            ),
           );
         },
       ),

@@ -16,8 +16,13 @@ class TimeModel with ChangeNotifier {
   /// Fetch current time...
   String get currentTime => _formatDateTime(_timestamp);
 
+  /// Fetch current hour...
   int get currentHour => _currentHour(_timestamp);
+
+  /// Fetch current minute...
   int get currentMinute => _currentMinute(_timestamp);
+
+  /// Fetch current second...
   int get currentSecond => _currentSecond(_timestamp);
 
   String _formatDateTime(DateTime timestamp) {

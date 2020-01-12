@@ -125,14 +125,51 @@ class ClockPainter extends CustomPainter {
     canvas.translate(radius, radius);
     canvas.rotate(2 * pi * this.seconds / 60);
 
-    Path path2 = Path();
-    path2.lineTo(0.0, -radius + 5.0);
+    Path path = Path();
+    path.lineTo(0.0, -radius + 5.0);
 
-    canvas.drawPath(path2, legPaint);
+    canvas.drawPath(path, legPaint);
 
     canvas.restore();
   }
 
   @override
   bool shouldRepaint(CustomPainter oldDelegate) => false;
+}
+
+class MinutePainter extends CustomPainter {
+  final Paint legPaint;
+  final int minutes;
+  final int seconds;
+
+  MinutePainter({
+    this.minutes = 0,
+    this.seconds = 0,
+  }) : legPaint = Paint() {
+    legPaint.color = Colors.black;
+    legPaint.style = PaintingStyle.stroke;
+    legPaint.strokeWidth = 8.0;
+    legPaint.strokeCap = StrokeCap.round;
+  }
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final radius = size.width / 2;
+    canvas.save();
+
+    canvas.translate(radius, radius);
+
+    canvas.rotate(2 * pi * ((this.minutes + (this.seconds / 60)) / 60));
+
+    Path path = Path();
+    path.lineTo(-8.5, -radius + 20.0);
+    path.close();
+
+    canvas.drawPath(path, legPaint);
+
+    canvas.restore();
+  }
+
+  @override
+  bool shouldRepaint(MinutePainter oldDelegate) => false;
 }
