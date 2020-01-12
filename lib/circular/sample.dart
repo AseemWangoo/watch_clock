@@ -105,12 +105,12 @@ class SampleClock extends StatelessWidget {
   }
 }
 
-class BellsAndLegsPainter extends CustomPainter {
+class ClockPainter extends CustomPainter {
   final Paint legPaint;
 
   final int seconds;
 
-  BellsAndLegsPainter({this.seconds = 0}) : legPaint = Paint() {
+  ClockPainter({this.seconds = 0}) : legPaint = Paint() {
     legPaint.color = Colors.black;
     legPaint.style = PaintingStyle.stroke;
     legPaint.strokeWidth = 8.0;
