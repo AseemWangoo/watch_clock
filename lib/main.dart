@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show SystemChrome, DeviceOrientation;
 
 import 'package:watch_clock/circular/circle.dart';
+import 'package:watch_clock/circular/hour_face.dart';
 import 'package:watch_clock/circular/minute_face.dart';
 import 'package:watch_clock/circular/sample.dart';
 import 'package:watch_clock/circular/second_face.dart';
@@ -46,6 +47,7 @@ class _Home extends StatelessWidget {
               child: ChangeNotifierWidget<TimeModel>(
                 child: Row(
                   children: [
+                    HourFace(),
                     MinuteFace(),
                     SecondFace(),
                   ],

@@ -173,3 +173,41 @@ class MinutePainter extends CustomPainter {
   @override
   bool shouldRepaint(MinutePainter oldDelegate) => false;
 }
+
+class HourPainter extends CustomPainter {
+  final Paint legPaint;
+  final int hours;
+  final int minutes;
+
+  HourPainter({
+    this.hours = 0,
+    this.minutes = 0,
+  }) : legPaint = Paint() {
+    legPaint.color = Colors.black;
+    legPaint.style = PaintingStyle.stroke;
+    legPaint.strokeWidth = 8.0;
+    legPaint.strokeCap = StrokeCap.round;
+  }
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final radius = size.width / 2;
+    canvas.save();
+
+    canvas.translate(radius, radius);
+
+    canvas.rotate(this.hours >= 12
+        ? 2 * pi * ((this.hours - 12) / 12 + (this.minutes / 720))
+        : 2 * pi * ((this.hours / 12) + (this.minutes / 720)));
+
+    Path path = Path();
+    path.lineTo(0.0, -radius + radius / 3);
+    path.close();
+
+    canvas.drawPath(path, legPaint);
+    canvas.restore();
+  }
+
+  @override
+  bool shouldRepaint(HourPainter oldDelegate) => false;
+}
