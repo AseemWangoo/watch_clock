@@ -2,10 +2,11 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:watch_clock/circular/hour_painter.dart';
-import 'package:watch_clock/circular/minute_painter.dart';
-import 'package:watch_clock/circular/painter.dart';
-import 'package:watch_clock/circular/second_painter.dart';
+
+import 'package:watch_clock/clock/hour_painter.dart';
+import 'package:watch_clock/clock/minute_painter.dart';
+import 'package:watch_clock/clock/painter.dart';
+import 'package:watch_clock/clock/second_painter.dart';
 import 'package:watch_clock/models/time.dart';
 
 class SampleClock extends StatelessWidget {

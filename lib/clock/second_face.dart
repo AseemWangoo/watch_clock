@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'package:watch_clock/circular/sample.dart';
+import 'package:watch_clock/clock/clock_painter.dart';
 import 'package:watch_clock/models/time.dart';
 
 class SecondFace extends StatelessWidget {

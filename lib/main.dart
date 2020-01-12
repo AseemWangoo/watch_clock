@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show SystemChrome, DeviceOrientation;
 
-import 'package:watch_clock/circular/hour_face.dart';
-import 'package:watch_clock/circular/minute_face.dart';
-import 'package:watch_clock/circular/second_face.dart';
+import 'package:watch_clock/clock/hour_face.dart';
+import 'package:watch_clock/clock/minute_face.dart';
+import 'package:watch_clock/clock/second_face.dart';
 import 'package:watch_clock/models/time.dart';
 import 'package:watch_clock/shared/widgets/change_notifier.dart';
 

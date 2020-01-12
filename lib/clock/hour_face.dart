@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'package:watch_clock/circular/sample.dart';
+import 'package:watch_clock/clock/clock_painter.dart';
 import 'package:watch_clock/models/time.dart';
 
-class MinuteFace extends StatelessWidget {
-  const MinuteFace({Key key}) : super(key: key);
+class HourFace extends StatelessWidget {
+  const HourFace({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +22,9 @@ class MinuteFace extends StatelessWidget {
         builder: (_, model, __) {
           //
           return CustomPaint(
-            painter: MinutePainter(
+            painter: HourPainter(
+              hours: model.currentHour,
               minutes: model.currentMinute,
-              seconds: model.currentSecond,
             ),
           );
         },
