@@ -54,7 +54,7 @@ class _MinuteFaceState extends State<MinuteFace>
             width: 200.0,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: _controller.isCompleted ? null : Colors.grey[850],
+              color: _controller.value > 0.75 ? null : Colors.grey[850],
             ),
             child: child,
           ),
