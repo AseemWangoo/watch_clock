@@ -52,9 +52,11 @@ class _Home extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: ChangeNotifierWidget<TimeModel>(
-                child: Stack(
-                  overflow: Overflow.visible,
-                  children: _clock,
+                child: ExcludeSemantics(
+                  child: Stack(
+                    overflow: Overflow.visible,
+                    children: _clock,
+                  ),
                 ),
                 model: TimeModel(),
                 builder: (context, model, child) {
@@ -62,7 +64,13 @@ class _Home extends StatelessWidget {
                   return Center(
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
-                      children: [Text(model.currentTime), child],
+                      children: [
+                        Semantics(
+                          value: model.currentTime,
+                          child: Text(model.currentTime),
+                        ),
+                        child
+                      ],
                     ),
                   );
                 },
