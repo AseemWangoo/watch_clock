@@ -33,9 +33,9 @@ class TimeText extends StatelessWidget {
             builder: (_, model, __) {
               //
               if (timeDisplay == TimeDisplay.hour)
-                return _TextWidget(value: model.currentHour.toString());
+                return _TextWidget(value: model.hourToDisplay);
               else
-                return _TextWidget(value: model.currentMinute.toString());
+                return _TextWidget(value: model.minuteToDisplay);
             },
           ),
         ),
