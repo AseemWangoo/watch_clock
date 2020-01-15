@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:watch_clock/models/time.dart';
+import 'package:watch_clock/shared/utils/screen_size.dart';
 
 enum TimeDisplay { hour, minute }
 
@@ -51,12 +52,34 @@ class _TextWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //
+    final _width = ScreenQueries.instance.width(context);
+
     return Text(
       value,
       style: TextStyle(
+        foreground: Paint()
+          ..shader = _TextShader(value: _width).displayShadeEffect,
         fontSize: 120.0,
         fontWeight: FontWeight.bold,
       ),
     );
   }
+}
+
+class _TextShader extends Paint {
+  final double value;
+
+  _TextShader({this.value = 800.0});
+
+  Shader get displayShadeEffect => LinearGradient(
+        colors: [
+          Colors.purple,
+          Colors.blue,
+          Colors.yellow,
+          Colors.red,
+        ],
+      ).createShader(
+        Rect.fromLTWH(0.0, 0.0, value, 0.0),
+      );
 }
