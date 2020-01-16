@@ -34,9 +34,15 @@ class TimeText extends StatelessWidget {
             builder: (_, model, __) {
               //
               if (timeDisplay == TimeDisplay.hour)
-                return _TextWidget(value: model.hourToDisplay);
+                return _TextWidget(
+                  colors: model.colorGradient,
+                  value: model.hourToDisplay,
+                );
               else
-                return _TextWidget(value: model.minuteToDisplay);
+                return _TextWidget(
+                  colors: model.colorGradient,
+                  value: model.minuteToDisplay,
+                );
             },
           ),
         ),
@@ -48,7 +54,13 @@ class TimeText extends StatelessWidget {
 class _TextWidget extends StatelessWidget {
   final String value;
 
-  const _TextWidget({Key key, this.value}) : super(key: key);
+  final List<Color> colors;
+
+  const _TextWidget({
+    Key key,
+    @required this.colors,
+    this.value,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +71,10 @@ class _TextWidget extends StatelessWidget {
       value,
       style: TextStyle(
         foreground: Paint()
-          ..shader = _TextShader(value: _width).displayShadeEffect,
+          ..shader = _TextShader(
+            colors: colors,
+            value: _width,
+          ).displayShadeEffect,
         fontSize: 120.0,
         fontWeight: FontWeight.bold,
       ),
@@ -70,15 +85,12 @@ class _TextWidget extends StatelessWidget {
 class _TextShader extends Paint {
   final double value;
 
-  _TextShader({this.value = 800.0});
+  final List<Color> colors;
+
+  _TextShader({this.value = 800.0, @required this.colors});
 
   Shader get displayShadeEffect => LinearGradient(
-        colors: [
-          Colors.purple,
-          Colors.blue,
-          Colors.yellow,
-          Colors.red,
-        ],
+        colors: colors,
       ).createShader(
         Rect.fromLTWH(0.0, 0.0, value, 0.0),
       );
