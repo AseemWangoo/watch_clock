@@ -1,0 +1,4 @@
+#Mon Jan 13 21:45:26 SGT 2020
+base.0=/Users/aseemwangoo/Documents/Flutter World/flutter-competitions/watch_clock/watch_clock/build/app/intermediates/dex/debug/mergeDexDebug/out/classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
