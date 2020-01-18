@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import 'package:watch_clock/clock/clock_painter.dart';
 import 'package:watch_clock/models/time.dart';
+import 'package:watch_clock/shared/widgets/clock_container.dart';
 
 class HourFace extends StatefulWidget {
   /// Display the hour hand of the clock...
@@ -53,9 +54,7 @@ class _HourFaceState extends State<HourFace>
           child: child,
         );
       },
-      child: Container(
-        height: 200.0,
-        width: 200.0,
+      child: ClockContainer(
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           color: Colors.grey[850],

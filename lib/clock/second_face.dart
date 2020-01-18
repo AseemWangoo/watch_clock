@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import 'package:watch_clock/clock/clock_painter.dart';
 import 'package:watch_clock/models/time.dart';
+import 'package:watch_clock/shared/widgets/clock_container.dart';
 
 class SecondFace extends StatelessWidget {
   /// Display the second hand of the clock...
@@ -12,13 +13,8 @@ class SecondFace extends StatelessWidget {
   Widget build(BuildContext context) {
     //
 
-    return Container(
-      height: 200.0,
-      width: 200.0,
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        // color: Colors.grey,
-      ),
+    return ClockContainer(
+      decoration: BoxDecoration(shape: BoxShape.circle),
       child: Consumer<TimeModel>(
         builder: (_, model, __) {
           //

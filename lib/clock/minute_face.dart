@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import 'package:watch_clock/clock/clock_painter.dart';
 import 'package:watch_clock/models/time.dart';
+import 'package:watch_clock/shared/widgets/clock_container.dart';
 
 class MinuteFace extends StatefulWidget {
   /// Display the minute hand of the clock...
@@ -50,14 +51,12 @@ class _MinuteFaceState extends State<MinuteFace>
       builder: (context, child) {
         return Positioned(
           left: _animation.value * 200.0,
-          child: Container(
-            height: 200.0,
-            width: 200.0,
+          child: ClockContainer(
+            child: child,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               color: _controller.value > 0.75 ? null : Colors.grey[850],
             ),
-            child: child,
           ),
         );
       },
