@@ -43,7 +43,7 @@ class _Home extends StatelessWidget {
       TimeText(timeDisplay: TimeDisplay.hour),
       HourFace(),
       SecondFace(),
-      TimeText(position: 200.0, timeDisplay: TimeDisplay.minute),
+      TimeText(timeDisplay: TimeDisplay.minute),
       MinuteFace()
     ];
 

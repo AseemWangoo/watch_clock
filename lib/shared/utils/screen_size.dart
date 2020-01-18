@@ -11,4 +11,8 @@ class ScreenQueries {
 
   /// Get the height of the device...
   double height(BuildContext context) => MediaQuery.of(context).size.height;
+
+  /// App's generic dimension...
+  double genericDimension(BuildContext context) =>
+      MediaQuery.of(context).size.width / 4;
 }

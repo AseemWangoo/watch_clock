@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import 'package:watch_clock/clock/clock_painter.dart';
 import 'package:watch_clock/models/time.dart';
+import 'package:watch_clock/shared/utils/screen_size.dart';
 import 'package:watch_clock/shared/widgets/clock_container.dart';
 
 class MinuteFace extends StatefulWidget {
@@ -45,12 +46,13 @@ class _MinuteFaceState extends State<MinuteFace>
   @override
   Widget build(BuildContext context) {
     //
+    final _dimension = ScreenQueries.instance.genericDimension(context);
 
     return AnimatedBuilder(
       animation: _controller,
       builder: (context, child) {
         return Positioned(
-          left: _animation.value * 200.0,
+          left: _animation.value * _dimension,
           child: ClockContainer(
             child: child,
             decoration: BoxDecoration(
