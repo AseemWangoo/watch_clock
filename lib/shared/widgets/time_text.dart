@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:watch_clock/models/time.dart';
 import 'package:watch_clock/shared/utils/screen_size.dart';
+import 'package:watch_clock/shared/widgets/clock_container.dart';
 
 enum TimeDisplay { hour, minute }
 
@@ -32,12 +33,8 @@ class TimeText extends StatelessWidget {
 
     return Positioned(
       left: _position,
-      child: Container(
-        height: 200.0,
-        width: 200.0,
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-        ),
+      child: ClockContainer(
+        decoration: BoxDecoration(shape: BoxShape.circle),
         child: Align(
           alignment: Alignment.center,
           child: Consumer<TimeModel>(

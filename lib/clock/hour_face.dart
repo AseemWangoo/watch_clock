@@ -52,7 +52,7 @@ class _HourFaceState extends State<HourFace>
       animation: _controller,
       builder: (context, child) {
         return Positioned(
-          left: _animation.value * -_dimension,
+          left: _animation.value * _dimension * -1,
           child: child,
         );
       },
