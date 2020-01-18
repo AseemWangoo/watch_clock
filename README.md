@@ -2,6 +2,10 @@
 
 Display Current Time..
 
+## Sneak-Peek
+
+![Image of Clock](https://github.com/AseemWangoo/watch_clock/blob/master/Clock-SS.png)
+
 ## How to install
 
 - Download the repo
