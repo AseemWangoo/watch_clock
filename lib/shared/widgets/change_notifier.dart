@@ -3,9 +3,12 @@ import 'package:provider/provider.dart';
 
 class ChangeNotifierWidget<T extends ChangeNotifier> extends StatefulWidget {
   final T model;
+
   final Widget child;
+
   final Widget Function(BuildContext context, T model, Widget child) builder;
 
+  /// Generic widget for the ChangeNotifierProvider...
   ChangeNotifierWidget({
     Key key,
     this.builder,

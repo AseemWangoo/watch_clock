@@ -5,12 +5,24 @@ enum ClockHand { hour, minute, second }
 
 class GenericPainter extends CustomPainter {
   final Paint handPaint;
+
+  /// What is the clock hand you want to display...
+  ///
+  /// An enum `ClockHand` having values `hour`, `minute` and `second`
   final ClockHand clockHand;
 
+  /// What is the current hour...
   final int hours;
+
+  /// What is the current minute...
   final int minutes;
+
+  /// What is the current second...
   final int seconds;
 
+  /// Painter for generating the circular dial
+  ///
+  /// for the clock...
   GenericPainter({
     this.hours = 0,
     this.minutes = 0,
@@ -31,9 +43,11 @@ class GenericPainter extends CustomPainter {
 
     switch (clockHand) {
       case ClockHand.hour:
-        canvas.rotate(this.hours >= 12
-            ? 2 * math.pi * ((this.hours - 12) / 12 + (this.minutes / 720))
-            : 2 * math.pi * ((this.hours / 12) + (this.minutes / 720)));
+        canvas.rotate(
+          this.hours >= 12
+              ? 2 * math.pi * ((this.hours - 12) / 12 + (this.minutes / 720))
+              : 2 * math.pi * ((this.hours / 12) + (this.minutes / 720)),
+        );
 
         Path path = Path();
         path.lineTo(0.0, -radius + radius / 2.5);
@@ -43,8 +57,9 @@ class GenericPainter extends CustomPainter {
         break;
 
       case ClockHand.minute:
-        canvas
-            .rotate(2 * math.pi * ((this.minutes + (this.seconds / 60)) / 60));
+        canvas.rotate(
+          2 * math.pi * ((this.minutes + (this.seconds / 60)) / 60),
+        );
 
         Path path = Path();
         path.lineTo(-8.5, -radius + 20.0);

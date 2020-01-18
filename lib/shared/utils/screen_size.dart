@@ -6,7 +6,9 @@ class ScreenQueries {
   /// GENERIC INSTANCE OF ScreenQueries CLASS.....
   static final instance = ScreenQueries._privateConstructor();
 
+  /// Get the width of the device...
   double width(BuildContext context) => MediaQuery.of(context).size.width;
 
+  /// Get the height of the device...
   double height(BuildContext context) => MediaQuery.of(context).size.height;
 }

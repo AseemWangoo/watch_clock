@@ -6,10 +6,17 @@ import 'package:watch_clock/shared/utils/screen_size.dart';
 enum TimeDisplay { hour, minute }
 
 class TimeText extends StatelessWidget {
+  /// Specify the position to display the text...
   final double position;
 
+  /// What is the text you want to display...
+  ///
+  /// An enum `TimeDisplay` having values `TimeDisplay.hour` and `TimeDisplay.minute`
   final TimeDisplay timeDisplay;
 
+  /// Display the Time (hours and minutes)
+  ///
+  /// in big text...
   const TimeText({
     Key key,
     this.position = -200.0,

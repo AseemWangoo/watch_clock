@@ -5,6 +5,7 @@ import 'package:watch_clock/clock/clock_painter.dart';
 import 'package:watch_clock/models/time.dart';
 
 class SecondFace extends StatelessWidget {
+  /// Display the second hand of the clock...
   const SecondFace({Key key}) : super(key: key);
 
   @override

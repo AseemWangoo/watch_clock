@@ -7,6 +7,7 @@ import 'package:intl/intl.dart' show DateFormat;
 class TimeModel with ChangeNotifier {
   DateTime _timestamp = DateTime.now();
 
+  /// Base model for displaying the current time....
   TimeModel() {
     Timer.periodic(Duration(seconds: 1), (t) {
       _timestamp = DateTime.now();

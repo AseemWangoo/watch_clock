@@ -5,6 +5,7 @@ import 'package:watch_clock/clock/clock_painter.dart';
 import 'package:watch_clock/models/time.dart';
 
 class MinuteFace extends StatefulWidget {
+  /// Display the minute hand of the clock...
   const MinuteFace({Key key}) : super(key: key);
 
   @override

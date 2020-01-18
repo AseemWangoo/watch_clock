@@ -13,11 +13,14 @@ void main() async {
 
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.landscapeRight,
+    DeviceOrientation.landscapeLeft,
   ]);
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  /// Entry point for the app...
+
   const MyApp({Key key}) : super(key: key);
 
   @override
