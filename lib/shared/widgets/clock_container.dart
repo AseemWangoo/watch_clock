@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:watch_clock/shared/utils/screen_size.dart';
 
 class ClockContainer extends StatelessWidget {
+  /// Specify the decoration for the dial...
   final Decoration decoration;
 
+  /// Specify the widget for this container...
   final Widget child;
 
+  /// Generic container for the hour and minute face...
   const ClockContainer({
     Key key,
     @required this.decoration,
@@ -15,7 +17,6 @@ class ClockContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //
-    final _dimension = ScreenQueries.instance.width(context);
 
     return Container(
       height: 200.0,
