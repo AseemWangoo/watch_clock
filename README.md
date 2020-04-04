@@ -2,6 +2,12 @@
 
 Display Current Time..
 
+<p>
+  <a href="https://www.youtube.com/user/aseemwangoo/videos" target="_blank">
+  <img src="https://github.com/AseemWangoo/experiment_with_providers/blob/master/brand.png">
+  </a>  
+</p>
+
 ## Sneak-Peek
 
 ![Image of Clock](https://github.com/AseemWangoo/watch_clock/blob/master/Clock-SS.png)
